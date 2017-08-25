@@ -1,0 +1,103 @@
+INFO    2017-08-25 16:26:53.814 [Phoenix ] (): Logger started
+WARN    2017-08-25 16:26:53.839 [Phoenix ] (): Phoenix was not started by the daemon thus it will not be possible to restart the JVM via the Management interface.
+INFO    2017-08-25 16:26:53.870 [Phoenix.] (): Work directory does not exist, attempting to create directory C:\Devel\Tools\Java\james-2.3.2.1\work.
+INFO    2017-08-25 16:26:53.884 [Phoenix.] (): Installing Sar located at file:/C:/Devel/Tools/Java/james-2.3.2.1/apps/james.sar.
+INFO    2017-08-25 16:26:54.901 [Phoenix.] (): Unknown resource. Bundle: 'org.apache.avalon.phoenix.components.monitor.Resources' Key: 'scanner.skipping-file.notice' Args: 'C:\Devel\Tools\Java\james-2.3.2.1\apps\james' Reason: java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key scanner.skipping-file.notice
+INFO    2017-08-25 16:26:55.041 [Phoenix.] (): Verifying that all key-stores have valid names.
+INFO    2017-08-25 16:26:55.041 [Phoenix.] (): Verify that any keystore names used by grant or permission reference actual keystores
+INFO    2017-08-25 16:26:55.041 [Phoenix.] (): Verify that if target is null then actions is null.
+INFO    2017-08-25 16:26:55.153 [Phoenix.] (): Verifying that the name specified for Blocks and BlockListeners are valid.
+INFO    2017-08-25 16:26:55.154 [Phoenix.] (): Verifying that the names specified for Component are valid.
+INFO    2017-08-25 16:26:55.154 [Phoenix.] (): Verifying that the names specified for the Components are unique.
+INFO    2017-08-25 16:26:55.154 [Phoenix.] (): Verifying that the dependency mapping is valid according to ComponentInfos.
+INFO    2017-08-25 16:26:55.154 [Phoenix.] (): Verifying that the dependency mapping for every Component is valid with respect to other components.
+INFO    2017-08-25 16:26:55.154 [Phoenix.] (): Verifying that there are no circular dependencies between Components.
+INFO    2017-08-25 16:26:55.155 [Phoenix.] (): Verifying that the name specified for Blocks and BlockListeners are unique.
+INFO    2017-08-25 16:26:55.156 [Phoenix.] (): Verifying that the specified Blocks have valid types.
+INFO    2017-08-25 16:26:55.179 [Phoenix.] (): Verifying that the specified BlockListeners have valid types.
+INFO    2017-08-25 16:26:55.206 [Phoenix.] (): 20 Blocks to process for phase "startup". Order of processing = [dnsserver, database-connections, mailstore, users-store, localusersrepository, spoolrepository, sockets, thread-manager, scheduler, James, mailetpackages, matcherpackages, spoolmanager, connections, remotemanager, pop3server, smtpserver, nntp-repository, nntpserver, fetchmail].
+ERROR   2017-08-25 16:26:55.252 [Phoenix.] (): Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).
+ERROR   2017-08-25 16:26:55.252 [Phoenix.] (): There was an error running phase "startup" for Block named "users-store". (Reason: Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).).
+org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleException: Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.fail(LifecycleHelper.java:354)
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.startup(LifecycleHelper.java:226)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.startup(DefaultApplication.java:530)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.doRunPhase(DefaultApplication.java:478)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.runPhase(DefaultApplication.java:409)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.start(DefaultApplication.java:180)
+	at org.apache.avalon.framework.container.ContainerUtil.start(ContainerUtil.java:260)
+rethrown from
+org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL
+	at org.apache.james.userrepository.UsersFileRepository.configure(UsersFileRepository.java:134)
+	at org.apache.avalon.framework.container.ContainerUtil.configure(ContainerUtil.java:201)
+	at org.apache.james.core.AvalonUsersStore.initialize(AvalonUsersStore.java:130)
+	at org.apache.avalon.framework.container.ContainerUtil.initialize(ContainerUtil.java:244)
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.startup(LifecycleHelper.java:200)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.startup(DefaultApplication.java:530)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.doRunPhase(DefaultApplication.java:478)
+rethrown from
+java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.WinNTFileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at org.apache.james.userrepository.UsersFileRepository.configure(UsersFileRepository.java:132)
+	at org.apache.avalon.framework.container.ContainerUtil.configure(ContainerUtil.java:201)
+	at org.apache.james.core.AvalonUsersStore.initialize(AvalonUsersStore.java:130)
+INFO    2017-08-25 16:26:55.254 [Phoenix.] (): exception while starting:Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).
+
+WARN    2017-08-25 16:26:55.261 [Phoenix.] (): Failed to start application james.
+org.apache.avalon.framework.CascadingException: Failed to start application james.
+	at org.apache.avalon.phoenix.components.kernel.DefaultKernel.startup(DefaultKernel.java:313)
+	at org.apache.avalon.phoenix.components.kernel.DefaultKernel.addApplication(DefaultKernel.java:376)
+	at org.apache.avalon.phoenix.components.deployer.DefaultDeployer.deploy(DefaultDeployer.java:357)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployFile(DefaultEmbeddor.java:542)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployFile(DefaultEmbeddor.java:535)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployFiles(DefaultEmbeddor.java:520)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployDefaultApplications(DefaultEmbeddor.java:509)
+rethrown from
+org.apache.avalon.phoenix.interfaces.ApplicationException: Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.start(DefaultApplication.java:186)
+	at org.apache.avalon.framework.container.ContainerUtil.start(ContainerUtil.java:260)
+	at org.apache.avalon.phoenix.components.kernel.DefaultKernel.startup(DefaultKernel.java:295)
+	at org.apache.avalon.phoenix.components.kernel.DefaultKernel.addApplication(DefaultKernel.java:376)
+	at org.apache.avalon.phoenix.components.deployer.DefaultDeployer.deploy(DefaultDeployer.java:357)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployFile(DefaultEmbeddor.java:542)
+	at org.apache.avalon.phoenix.components.embeddor.DefaultEmbeddor.deployFile(DefaultEmbeddor.java:535)
+rethrown from
+org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleException: Component named "users-store" failed to pass through the Starting stage. (Reason: org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL).
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.fail(LifecycleHelper.java:354)
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.startup(LifecycleHelper.java:226)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.startup(DefaultApplication.java:530)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.doRunPhase(DefaultApplication.java:478)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.runPhase(DefaultApplication.java:409)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.start(DefaultApplication.java:180)
+	at org.apache.avalon.framework.container.ContainerUtil.start(ContainerUtil.java:260)
+rethrown from
+org.apache.avalon.framework.configuration.ConfigurationException: destination>>URL
+	at org.apache.james.userrepository.UsersFileRepository.configure(UsersFileRepository.java:134)
+	at org.apache.avalon.framework.container.ContainerUtil.configure(ContainerUtil.java:201)
+	at org.apache.james.core.AvalonUsersStore.initialize(AvalonUsersStore.java:130)
+	at org.apache.avalon.framework.container.ContainerUtil.initialize(ContainerUtil.java:244)
+	at org.apache.avalon.phoenix.containerkit.lifecycle.LifecycleHelper.startup(LifecycleHelper.java:200)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.startup(DefaultApplication.java:530)
+	at org.apache.avalon.phoenix.components.application.DefaultApplication.doRunPhase(DefaultApplication.java:478)
+rethrown from
+java.io.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома
+	at java.io.WinNTFileSystem.canonicalize0(Native Method)
+	at java.io.WinNTFileSystem.canonicalize(Unknown Source)
+	at java.io.File.getCanonicalPath(Unknown Source)
+	at java.io.File.getCanonicalFile(Unknown Source)
+	at org.apache.james.userrepository.UsersFileRepository.configure(UsersFileRepository.java:132)
+	at org.apache.avalon.framework.container.ContainerUtil.configure(ContainerUtil.java:201)
+	at org.apache.james.core.AvalonUsersStore.initialize(AvalonUsersStore.java:130)
+WARN    2017-08-25 16:26:55.321 [Phoenix.] (): Error deleting Work Directory "C:\Devel\Tools\Java\james-2.3.2.1\work\james-1503667613885". (Reason: File C:\Devel\Tools\Java\james-2.3.2.1\work\james-1503667613885\SAR-INF\lib\mailet-api-2.3.jar unable to be deleted.)
+java.io.IOException: File C:\Devel\Tools\Java\james-2.3.2.1\work\james-1503667613885\SAR-INF\lib\mailet-api-2.3.jar unable to be deleted.
+	at org.apache.avalon.excalibur.io.FileUtil.forceDelete(FileUtil.java:743)
+	at org.apache.avalon.excalibur.io.FileUtil.cleanDirectory(FileUtil.java:910)
+	at org.apache.avalon.excalibur.io.FileUtil.deleteDirectory(FileUtil.java:866)
+	at org.apache.avalon.excalibur.io.FileUtil.forceDelete(FileUtil.java:735)
+	at org.apache.avalon.excalibur.io.FileUtil.cleanDirectory(FileUtil.java:910)
+	at org.apache.avalon.excalibur.io.FileUtil.deleteDirectory(FileUtil.java:866)
+	at org.apache.avalon.excalibur.io.FileUtil.forceDelete(FileUtil.java:735)
+WARN    2017-08-25 16:26:55.383 [Phoenix.] (): Failed to stop application james as it is not initialized/started.
