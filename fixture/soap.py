@@ -1,5 +1,10 @@
+#Check in the file C:\xampp\php\php.ini
+# extension=php_soap.dll  is uncommented
+
 from suds.client import Client
 from suds import WebFault
+from model.project import Project
+
 
 class SoapHelper:
     def __init__(self, app):
@@ -14,7 +19,9 @@ class SoapHelper:
             return False
 
     def get_project_list(self, username, password):
-        r = self.client.service.mc_projects_get_user_accessible(username, password)
-#        r = self.client.service.mc_enum_status("administrator", "password")
-#        Some conversion ...
-        return r
+        soap_project_list = self.client.service.mc_projects_get_user_accessible(username, password)
+        project_list = []
+        for project_data in soap_project_list:
+            project_list.append(Project(project_id=project_data.id, name=project_data.name, status = project_data.status,
+                                        view_status = project_data.enabled, description = project_data.description))
+        return project_list
